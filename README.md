@@ -20,8 +20,6 @@ This project uses Notion to create and manage an anime watch list. It automatica
     - [Installation](#installation)
     - [Configuration](#configuration)
   - [Usage](#usage)
-  - [Project Structure](#project-structure)
-    - [Detailed Explanation](#detailed-explanation)
   - [Testing](#testing)
   - [Contributing](#contributing)
   - [License](#license)
@@ -155,42 +153,6 @@ By following these steps, you will set up a detailed and visually appealing anim
     python src/main.py
     ```
 
-## Project Structure
-anime-watchlist/
-├── .gitignore
-├── README.md
-├── requirements.txt
-├── src/
-│ ├── init.py
-│ ├── main.py
-│ ├── notion_handler.py
-│ └── config.py
-├── tests/
-│ ├── init.py
-│ ├── test_main.py
-│ └── test_notion_handler.py
-├── .env
-├── .github/
-│ └── workflows/
-│ └── ci.yml
-
-
-### Detailed Explanation
-- **.gitignore**: Specifies files and directories to be ignored by Git.
-- **README.md**: Provides information about the project.
-- **requirements.txt**: Lists the Python packages required for the project.
-- **src/**: Contains the main source code for the project.
-  - **__init__.py**: Initializes the src module.
-  - **main.py**: The main script to run the project.
-  - **notion_client.py**: Contains functions to interact with the Notion API.
-  - **config.py**: Loads configuration from the .env file.
-- **tests/**: Contains unit tests for the project.
-  - **__init__.py**: Initializes the tests module.
-  - **test_main.py**: Tests for the main script.
-  - **test_notion_client.py**: Tests for the Notion client functions.
-- **.env**: Stores environment variables (not to be committed to Git).
-- **.github/workflows/ci.yml**: GitHub Actions workflow for continuous integration.
-
 ## Testing
 1. **Run the unit tests:**
     ```sh
@@ -214,4 +176,4 @@ anime-watchlist/
 5. **Open a pull request.**
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
