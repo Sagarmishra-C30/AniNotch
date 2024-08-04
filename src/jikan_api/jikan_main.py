@@ -26,8 +26,13 @@ async def main():
         app_logger.info("Fetched search results successfully")
         data_logger.info("Search Results Data: %s", json.dumps(search_results, indent=4))
 
-        app_logger.info("Fetching character details for ID 1")
+        app_logger.info("Fetching character details for ID 5")
         character_details = await handler.get_character_by_id(5)
+        app_logger.info("Fetched character details successfully")
+        data_logger.info("Character Details Data: %s", json.dumps(character_details, indent=4))
+
+        app_logger.info("Fetching episode details for ID 30276")
+        character_details = await handler.get_episodes_for_anime_id(30276)
         app_logger.info("Fetched character details successfully")
         data_logger.info("Character Details Data: %s", json.dumps(character_details, indent=4))
 
