@@ -10,6 +10,7 @@ venv/
 
 # Folders
 helpers/
+logs/development/
 
 # Compiled files
 __pycache__/
