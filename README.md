@@ -1,9 +1,9 @@
-# Anime Watchlist Project
+# Anime Watchlist Notion Project
 
 This project uses Notion to create and manage an anime watch list. It automatically fetches anime details from the Jikan API (a MyAnimeList API wrapper) and updates a Notion database with the information.
 
 ## Table of Contents
-- [Anime Watchlist Project](#anime-watchlist-project)
+- [Anime Watchlist Notion Project](#anime-watchlist-notion-project)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Setup](#setup)
@@ -162,12 +162,12 @@ anime-watchlist/
 ├── src/
 │ ├── init.py
 │ ├── main.py
-│ ├── notion_client.py
+│ ├── notion_handler.py
 │ └── config.py
 ├── tests/
 │ ├── init.py
 │ ├── test_main.py
-│ └── test_notion_client.py
+│ └── test_notion_handler.py
 ├── .env
 ├── .github/
 │ └── workflows/

@@ -1,11 +1,24 @@
-# Python
-__pycache__/
-*.py[cod]
-.Python
+# Python build and distribution
+build/
+dist/
+*.egg-info/
+
+# Virtual environment
 env/
 venv/
 .env
+
+# Folders
 helpers/
+
+# Compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+.Python
+
 # macOS
 .DS_Store
 
