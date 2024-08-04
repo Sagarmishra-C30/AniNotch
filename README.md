@@ -1,51 +1,216 @@
-# Anime Notion Filler
+# Anime Watchlist Project
 
-Welcome to the Anime Notion Filler project! This project provides a logic to fetch anime data and fill it into Notion using Python through anime names or a file containing names.
+This project uses Notion to create and manage an anime watch list. It automatically fetches anime details from the Jikan API (a MyAnimeList API wrapper) and updates a Notion database with the information.
+
+## Table of Contents
+- [Anime Watchlist Project](#anime-watchlist-project)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Setup](#setup)
+    - [Prerequisites](#prerequisites)
+- [Step-by-Step Guide to Setting Up Your Anime Watch List in Notion](#step-by-step-guide-to-setting-up-your-anime-watch-list-in-notion)
+  - [Step 1: Set Up Notion Database Structure](#step-1-set-up-notion-database-structure)
+    - [Main Anime Database](#main-anime-database)
+    - [Seasons Database](#seasons-database)
+    - [Episodes Database](#episodes-database)
+    - [Characters Database](#characters-database)
+  - [Step 2: Visual and Aesthetic Enhancements in Notion](#step-2-visual-and-aesthetic-enhancements-in-notion)
+  - [Step 3: Integrate Notion API and Python Script](#step-3-integrate-notion-api-and-python-script)
+    - [Set Up Notion API Integration](#set-up-notion-api-integration)
+    - [Installation](#installation)
+    - [Configuration](#configuration)
+  - [Usage](#usage)
+  - [Project Structure](#project-structure)
+    - [Detailed Explanation](#detailed-explanation)
+  - [Testing](#testing)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Features
+- Fetches anime details using the Jikan API.
+- Updates a Notion database with the anime's English name, Japanese name, banner image, trailer link, story summary, genres, and more.
+- Uses Python scripts to automate the process.
+- Includes unit tests for key functionalities.
 
-- Fetch anime data from a reliable source.
-- Fill the fetched data into Notion.
-- Support for fetching data from a file containing anime names.
+## Setup
 
-## Installation
+### Prerequisites
+- Python 3.6 or higher
+- A Notion account
+- Notion API integration and database IDs
+- A GitHub account (optional, for CI/CD setup)
 
-1. Clone the repository.
-2. Install the required dependencies by running `pip install -r requirements.txt`.
-3. Set up your Notion API credentials. See the [Notion API documentation](https://developers.notion.com/docs/using-the-api) for more information.
+# Step-by-Step Guide to Setting Up Your Anime Watch List in Notion
+
+## Step 1: Set Up Notion Database Structure
+
+### Main Anime Database
+Create a new table in Notion for your main Anime database and add the following properties:
+
+- **Title (Default)**: Anime name
+- **Japanese Name**: Text
+- **Banner Image**: Files
+- **Seasons**: Relation to "Seasons" database
+- **Total Seasons**: Formula to count linked seasons
+- **Total Episodes**: Formula to sum episodes from linked seasons
+- **Characters**: Relation to "Characters" database
+- **Trailer**: URL
+- **Story Summary**: Text
+- **Genres**: Multi-select
+- **Watch Status**: Select (e.g., Watching, Completed)
+- **Ratings**: Text
+- **Tags**: Multi-select (optional)
+
+### Seasons Database
+Create a new table in Notion for your Seasons database and add the following properties:
+
+- **Anime**: Relation to Main Anime database
+- **Season Name**: Text
+- **Total Episodes**: Number
+- **Episodes**: Relation to "Episodes" database
+
+### Episodes Database
+Create a new table in Notion for your Episodes database and add the following properties:
+
+- **Season**: Relation to Seasons database
+- **Episode Number**: Number
+- **Episode Name**: Text
+
+### Characters Database
+Create a new table in Notion for your Characters database and add the following properties:
+
+- **Anime**: Relation to Main Anime database
+- **Character Name**: Text
+- **Character Image**: Files
+
+## Step 2: Visual and Aesthetic Enhancements in Notion
+Enhance the visual appeal and organization of your Notion database:
+
+1. **Create a "Gallery" View**: 
+   - For the main Anime database, create a "Gallery" view.
+   - Configure the gallery to display the "Banner Image" as the card preview.
+   - Select properties to show on the card, such as Title, Genres, Watch Status.
+
+2. **Add Icons and Cover Images**:
+   - Add icons and cover images to your Notion page for a more visually appealing look.
+   - Click on "Add icon" at the top of the page to select an icon.
+   - Click on "Add cover" to upload or choose a cover image that represents the theme of your anime watch list.
+
+3. **Use Color-Coding and Toggles**:
+   - Utilize Notion’s color-coding for tags and genres to make them stand out.
+   - Use Notion’s "Toggle List" feature to group similar properties together for a cleaner look.
+
+## Step 3: Integrate Notion API and Python Script
+Automate the fetching of anime details by integrating the Notion API with a Python script.
+
+### Set Up Notion API Integration
+
+1. **Go to Notion Developers**:
+   - Visit the [Notion Developers](https://www.notion.so/my-integrations) page and create a new integration.
+
+2. **Copy the Integration Token**:
+   - After creating the integration, copy the integration token for use in your Python script.
+
+3. **Share the Database with Integration**:
+   - Go to your Notion databases.
+   - Click on "Share" and invite your integration to the database.
+
+By following these steps, you will set up a detailed and visually appealing anime watch list in Notion and integrate it with a Python script to automate data fetching. In the next step, we will proceed with the Python script implementation to fetch anime details and update the Notion database.
+
+
+### Installation
+1. **Clone the repository:**
+    ```sh
+    git clone https://github.com/yourusername/anime-watchlist.git
+    cd anime-watchlist
+    ```
+
+2. **Create a virtual environment and activate it:**
+    ```sh
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
+
+3. **Install the required packages:**
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+### Configuration
+1. **Create a `.env` file in the root directory and add your Notion API token and database IDs:**
+    ```env
+    NOTION_TOKEN=your_notion_token_here
+    ANIME_DATABASE_ID=your_anime_database_id_here
+    SEASONS_DATABASE_ID=your_seasons_database_id_here
+    CHARACTERS_DATABASE_ID=your_characters_database_id_here
+    ```
+
+2. **Setup your Notion database:**
+   - Follow the structure provided in the [Project Structure](#project-structure) section to create and link your Notion databases for anime, seasons, and characters.
 
 ## Usage
+1. **Run the script to fetch and update anime details:**
+    ```sh
+    python src/main.py
+    ```
 
-1. Import the necessary modules:
+## Project Structure
+anime-watchlist/
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── src/
+│ ├── init.py
+│ ├── main.py
+│ ├── notion_client.py
+│ └── config.py
+├── tests/
+│ ├── init.py
+│ ├── test_main.py
+│ └── test_notion_client.py
+├── .env
+├── .github/
+│ └── workflows/
+│ └── ci.yml
 
-```python
-from anime_notion_filler import AnimeNotionFiller
-```
 
-2. Create an instance of the `AnimeNotionFiller` class:
+### Detailed Explanation
+- **.gitignore**: Specifies files and directories to be ignored by Git.
+- **README.md**: Provides information about the project.
+- **requirements.txt**: Lists the Python packages required for the project.
+- **src/**: Contains the main source code for the project.
+  - **__init__.py**: Initializes the src module.
+  - **main.py**: The main script to run the project.
+  - **notion_client.py**: Contains functions to interact with the Notion API.
+  - **config.py**: Loads configuration from the .env file.
+- **tests/**: Contains unit tests for the project.
+  - **__init__.py**: Initializes the tests module.
+  - **test_main.py**: Tests for the main script.
+  - **test_notion_client.py**: Tests for the Notion client functions.
+- **.env**: Stores environment variables (not to be committed to Git).
+- **.github/workflows/ci.yml**: GitHub Actions workflow for continuous integration.
 
-```python
-filler = AnimeNotionFiller(api_key='YOUR_API_KEY')
-```
-
-3. Fetch anime data from a file containing anime names:
-
-```python
-anime_names = ['anime1', 'anime2', 'anime3']
-filler.fill_from_file(anime_names)
-```
-
-4. Fetch anime data from anime names:
-
-```python
-anime_names = ['anime1', 'anime2', 'anime3']
-filler.fill_from_names(anime_names)
-```
+## Testing
+1. **Run the unit tests:**
+    ```sh
+    python -m unittest discover tests
+    ```
 
 ## Contributing
-
-Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
+1. **Fork the repository.**
+2. **Create a new branch:**
+    ```sh
+    git checkout -b feature/your-feature-name
+    ```
+3. **Make your changes and commit them:**
+    ```sh
+    git commit -m "Add some feature"
+    ```
+4. **Push to the branch:**
+    ```sh
+    git push origin feature/your-feature-name
+    ```
+5. **Open a pull request.**
 
 ## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

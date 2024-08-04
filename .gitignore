@@ -1,2 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+.Python
+env/
 venv/
 .env
+helpers/
+# macOS
+.DS_Store
+
+# Notion
+notion-sdk-py/
