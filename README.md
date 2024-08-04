@@ -142,6 +142,7 @@ By following these steps, you will set up a detailed and visually appealing anim
     NOTION_TOKEN=your_notion_token_here
     ANIME_DATABASE_ID=your_anime_database_id_here
     SEASONS_DATABASE_ID=your_seasons_database_id_here
+    EPISODES_DATABASE_ID=your_episodes_database_id_here
     CHARACTERS_DATABASE_ID=your_characters_database_id_here
     ```
 
