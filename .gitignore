@@ -25,3 +25,6 @@ __pycache__/
 
 # Notion
 notion-sdk-py/
+
+#Others
+*.ps1
